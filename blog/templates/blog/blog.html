@@ -1,0 +1,14 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <div class="container">
+        <center><h1>Rutthawit's Blog</h1>
+        <h4>Has writen {{ blog.count }} blog{{blog.count|pluralize}}</h4></center>
+            {% for bg in blog %}
+                <a href="{% url 'blogs:blog-detail' bg.id %}"><h2>{{bg.title}}</h2></a>
+                <h5><em>{{ bg.publish_date|date:'M jS Y' }}</em></h5>
+                <img src="{{ bg.image.url }}" alt="" height="300">
+                <p>{{ bg.content|truncatechars:100 }}</p>
+                <br>
+            {% endfor %}
+    </div>
+{% endblock %}

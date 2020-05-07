@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    {% load static %}
+    <img src="{% static 'portfolio/mypic.jpg' %}" height="300">
+    {% for obj in projects %}
+        <h2>{{obj.title}}</h2>
+        <h3><em>{{ obj.descriptions }}</em></h3>
+        <img src="{{ obj.image.url }}" alt="" height="300">
+        <br>
+        {% if obj.url %}
+        <a href="{{ obj.url }}">Link</a>
+        {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}
